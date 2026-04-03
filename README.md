@@ -28,7 +28,7 @@ The dashboard is designed for two audiences:
 
 ## Data Source
 
-**Kaggle — Pharmaceutical Sales Dataset**
+**Foresight — Pharmaceutical Manufacturing Company’s Wholesale-Retail Data**
 254,082 transactions · Poland & Germany · 2017–2020
 
 | Field | Description |
