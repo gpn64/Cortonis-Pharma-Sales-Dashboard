@@ -3,6 +3,9 @@
 ![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
 ![Power BI](https://img.shields.io/badge/Power%20BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
 ![DAX](https://img.shields.io/badge/DAX-4A4A4A?style=for-the-badge&logo=microsoftexcel&logoColor=white)
+> A commercial performance dashboard for a fictional pharmaceutical company — built to answer the questions a sales manager actually asks, with a UX-first approach from Figma wireframe to deployed report.
+
+---
 
 ## Status
 
@@ -57,7 +60,7 @@ The dashboard is designed for two audiences:
 
 ### Screenshots
 
-![Executive Overview](Screenshots/Executive_Overview.PNG)
+![Executive Overview](./screenshots/executive_overview.png)
 
 ### KPI Cards
 
@@ -139,8 +142,27 @@ Users today are surrounded by polished consumer apps and websites. When a new in
 
 This dashboard is built on the premise that a BI report should feel as intuitive as the apps people already use daily. That means consistent navigation, a clear visual hierarchy, and — critically — each page designed around a single audience and a single question. A field manager shouldn't have to scroll past executive-level content to find their territory data. A sales leader shouldn't be overwhelmed by rep-level detail on a summary page. When the right information reaches the right person without friction, adoption follows naturally.
 
+**Typography**
+
+| Role | Font |
+|------|------|
+| Titles & headers | Trebuchet MS |
+| Body & data labels | Segoe UI |
+
+**Color palette**
+
+| Color | Hex | Usage |
+|-------|-----|-------|
+| Emerald Green | `#03DE74` | Positive variance, growth indicators |
+| Navy | `#0B1F52` | Sidebar background, primary dark elements |
+| Cyan | `#58FFE6` | Data bars, area chart, accent visuals |
+| Mint | `#55FFCC` | Secondary accent, chart fills |
+| Red | `#D7263D` | Negative variance, decline indicators |
+
+The palette is intentionally tight — two neutrals (navy, white) and three accent colors with clear semantic roles. Green and red are reserved exclusively for variance indicators; cyan and mint handle all data visualization. This avoids the common mistake of using color decoratively, which creates visual noise without adding information.
+
 **Design principles applied:**
-- Single accent color (cyan/teal) against a dark navy sidebar and light content area — creates visual hierarchy without noise
+- Defined color semantics — every color in the palette has a single purpose and never appears outside that role
 - One question per page — each report page has a defined analytical purpose and a defined audience; no page tries to answer everything
 - App-like experience — custom button navigation, personalized header, feedback footer — the dashboard behaves like a product, not a report
 - Information density calibrated by audience — executive page prioritizes scannable KPIs; detail pages support deeper exploration
