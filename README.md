@@ -1,8 +1,8 @@
 # 💊 Cortonis Pharma — Sales Performance Dashboard
 
+![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
 ![Power BI](https://img.shields.io/badge/Power%20BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
 ![DAX](https://img.shields.io/badge/DAX-4A4A4A?style=for-the-badge&logo=microsoftexcel&logoColor=white)
-![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
 
 ## Status
 
@@ -28,7 +28,7 @@ The dashboard is designed for two audiences:
 
 ## Data Source
 
-**Foresight — Pharmaceutical Manufacturing Company’s Wholesale-Retail Data**
+**Foresight — Pharmaceutical Manufacturing Company's Wholesale-Retail Data**
 254,082 transactions · Poland & Germany · 2017–2020
 
 | Field | Description |
@@ -61,7 +61,7 @@ The dashboard is designed for two audiences:
 
 ### KPI Cards
 
-Five top-level metrics, each showing the current period value and YoY variance (color-coded green/red):
+Five top-level metrics, each showing the current period value alongside both the previous year's absolute value and the variance in absolute and percentage terms (color-coded green/red):
 
 | KPI | Description |
 |-----|-------------|
@@ -71,11 +71,15 @@ Five top-level metrics, each showing the current period value and YoY variance (
 | **Price / Unit on Average** | Average selling price per unit |
 | **Customers** | Number of distinct active customers |
 
-YoY variance is dynamic — it adapts automatically to the selected period (year, quarter, or month) using `PARALLELPERIOD` DAX logic.
+Each card displays: current value · last year value · absolute variance · % variance. Showing both absolute and relative variance is a deliberate choice — on billion-dollar figures, a "-16%" means more when paired with "-$575.96M". YoY variance adapts automatically to the selected period using `PARALLELPERIOD` DAX logic.
 
-### Trend Area Chart — Field Parameter (Metric)
+### Trend Area Chart — Current Year vs. Last Year + Field Parameter (Metric)
 
-The area chart displays the sales trend across the selected period. A dropdown field parameter lets the user switch the displayed metric across all five KPIs:
+The area chart overlays two series simultaneously:
+- **Sales** (current period) — dark navy area
+- **Sales Last Year** (same period, previous year) — teal area
+
+This overlay makes period-over-period trends immediately visible without any additional interaction. A dropdown field parameter lets the user switch the displayed metric across all five KPIs:
 
 ```
 Sales → Units Sold → Orders → Price/Unit → Customers
@@ -91,11 +95,13 @@ The matrix on the right provides a ranked breakdown of the selected metric. It u
 Switches the value column between Sales, Units Sold, Orders, Price/Unit, and Customers.
 
 **Parameter 2 — Dimension**
-Switches the breakdown axis between:
-- Country → Region
+A dropdown switches the breakdown axis between:
+- Locations (Country → Region)
 - Product Class → Product
 - Channel → Sub-channel
 - Sales Team → Sales Rep
+
+The matrix displays three columns: the absolute value, a data bar for visual ranking, and a **Var% vs. Last Year** column — color-coded green/red — so performance context is visible directly in the breakdown without needing a separate visual.
 
 This dual-parameter architecture means the user can explore any metric across any dimension from a single page — without navigating away or duplicating report pages.
 
@@ -114,10 +120,12 @@ A **Clear All** button resets all slicers via a named bookmark — one click ret
 ### UX Details
 
 - **Personalized greeting** — `USERPRINCIPALNAME()` renders the logged-in user's name and email in the top-right header
+- **Date range slicer** — a dual-handle slider with explicit start/end dates gives precise period control, more flexible than a year dropdown
 - **Last updated timestamp** — displayed in the sidebar for data governance transparency
-- **Feedback & help links** — sidebar footer includes Send Feedback, FAQ, and About this Dashboard
+- **Help links** — sidebar footer includes How to use, Contact us, and About
 - **Custom navigation** — page navigation via buttons rather than native Power BI tabs, consistent with the overall app-like experience
 - **Tooltip pages** — hovering over KPI cards and area chart data points surfaces a custom tooltip page with contextual detail
+- **Author signature** — "Developed by Guillaume Pien" displayed in the report footer
 
 ---
 
@@ -172,15 +180,15 @@ DIVIDE([Total Sales], [Total Units])
 
 | File | Description |
 |------|-------------|
-| `Pharma_Sales_Dashboard.pbix` | Power BI report file |
+| `Pharma_Sales_Dashboard_V0_1.pbix` | Power BI report file |
 | `screenshots/` | Dashboard page screenshots |
 
 ---
 
 ## Data Source
 
-**Foresight — Pharmaceutical Manufacturing Company’s Wholesale-Retail Data**
-[[https://foresightbi.com.ng/practice-data/3-datasets-for-your-portfolio/](https://foresightbi.com.ng/practice-data/3-datasets-for-your-portfolio/)]
+**Foresight — Pharmaceutical Manufacturing Company's Wholesale-Retail Data**
+[https://foresightbi.com.ng/practice-data/3-datasets-for-your-portfolio/](https://foresightbi.com.ng/practice-data/3-datasets-for-your-portfolio/)
 
 ---
 
