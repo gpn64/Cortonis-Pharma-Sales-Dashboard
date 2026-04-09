@@ -14,7 +14,7 @@
 |------|--------|
 | Executive Overview | ✅ Complete |
 | Territory & Geographic Performance | ✅ Complete |
-| Product & Therapeutic Class | 🔄 In progress |
+| Product & Therapeutic Class | ✅ Complete |
 | Channel & Customer Analysis | 🔄 In progress |
 | Sales Rep & Team Performance | 🔄 In progress |
 
@@ -185,6 +185,131 @@ The analytical centrepiece of this page. Each bubble represents a city, plotted 
 - Quadrant background colors (blue = positive, pink = negative zones) make the four segments immediately readable without requiring the user to interpret axis values
 - **Zoom sliders** on both axes allow the user to isolate the dense city cluster in the $0–$10M range without losing the outliers visible at full scale
 - Quadrant labels (Stars, Question Marks, Dogs, Cash Cows) are displayed in the chart legend using BCG Matrix terminology — familiar to any commercial audience
+
+---
+
+## Page 3 — Product Mix & Therapeutic Class
+
+### What it answers
+- What are we selling, and is the mix shifting across quarters?
+- Which therapeutic classes drive the most revenue — and are they growing?
+- Which classes have the strongest seasonal patterns, and when do they peak?
+
+### Screenshot
+
+![Product Mix](./Screenshots/Product_Mix.PNG)
+
+### Product Class Ranks — Ribbon Chart with Field Parameter
+
+A ribbon chart showing the ranking and relative volume of all 6 therapeutic classes across quarters. The crossing of ribbons signals a ranking change between classes — immediately visible without reading the axis values.
+
+A dropdown field parameter lets the user switch the ranking metric:
+```
+Sales → Units Sold → Orders → Price/Unit → Customers
+```
+
+Switching the metric rerankings all classes dynamically — the same interaction pattern as Pages 1 and 2, keeping the UX consistent across the dashboard.
+
+### Distribution By Product — Matrix with Drill-Down
+
+Same dual field parameter architecture as Pages 1 and 2:
+
+**Parameter 1 — Metric:** Sales, Units Sold, Orders, Price/Unit, Customers
+**Parameter 2 — Dimension:** defaults to Product Class, drill-down to Product Name
+
+The matrix displays absolute value, data bar, and Var% YoY per class — giving immediate context on both volume and trend without requiring a separate visual. Data bars use cyan (`#58FFE6`) to distinguish them from variance indicators.
+
+### Seasonality Analysis — Small Multiples with Confidence Intervals
+
+The most technically sophisticated visual in the dashboard. Six line charts in a 2×3 small multiples grid — one panel per therapeutic class — showing how normalized monthly sales evolve across the year relative to the annual average.
+
+**The Seasonality Index**
+
+The Y axis displays a normalized index rather than raw sales values:
+
+```
+Seasonality_Index = Monthly Total Sales / Average Monthly Sales (annual)
+```
+
+A value of 1.0 means the month is exactly average. A value of 1.5 means 50% above average. This normalization makes the 6 classes directly comparable regardless of their very different absolute volumes — Analgesics at $692M and Antimalarial at $452M show on the same scale.
+
+A dashed reference line at Y=1.0 (labeled "Avg") materializes the baseline on each panel, making deviations immediately readable without requiring the user to interpret axis values.
+
+**95% Confidence Intervals**
+
+Each panel shows a shaded band around the index line representing a 95% confidence interval — calculated as:
+
+```
+IC = Index ± 1.96 × (StdDev / √N)
+```
+
+Where StdDev is the standard deviation of the seasonality index across all products within the class for that month, and N is the number of distinct products. A narrow band means all products in the class share a similar seasonal pattern. A wide band means high dispersion — some products peak while others trough in the same month.
+
+**Key patterns visible in the data:**
+
+| Class | Peak months | Interpretation |
+|-------|-------------|----------------|
+| Analgesics | June – August | Estival peak — sports injuries, outdoor activity |
+| Antibiotics | January – February | Winter peak — respiratory infections |
+| Antimalarial | April & October | Two peaks — spring and autumn travel seasons |
+| Antipiretics | February & November | Winter peaks — fever and infections |
+| Antiseptics | Relatively flat | Low seasonality — regular usage year-round |
+| Mood Stabilizers | Complex oscillations | Multiple peaks — consistent with seasonal depression literature |
+
+**Technical implementation:**
+
+The confidence interval measures use `REMOVEFILTERS` rather than `ALLEXCEPT` to correctly preserve the month context across both `Month Number` and `Month_Name_Short` columns simultaneously:
+
+```dax
+Seasonality_Index =
+VAR TotalThisMonth =
+    CALCULATE(
+        SUM(Fact_Sales[Sales]),
+        REMOVEFILTERS('Calendar'[Date]),
+        REMOVEFILTERS('Calendar'[Year]),
+        REMOVEFILTERS('Calendar'[Month_Name_Short])
+    )
+VAR TotalAllYear =
+    CALCULATE(
+        SUM(Fact_Sales[Sales]),
+        REMOVEFILTERS('Calendar')
+    )
+VAR NbMonths =
+    CALCULATE(
+        DISTINCTCOUNT('Calendar'[Month Number]),
+        REMOVEFILTERS('Calendar')
+    )
+VAR AvgMonthlyTotal = DIVIDE(TotalAllYear, NbMonths)
+RETURN
+    DIVIDE(TotalThisMonth, AvgMonthlyTotal)
+```
+
+```dax
+Seasonality_Upper_95 =
+VAR AvgIndex = [Seasonality_Index]
+VAR StdDev =
+    CALCULATE(
+        STDEVX.P(
+            VALUES(Fact_Sales[Product Name]),
+            CALCULATE([Seasonality_Index])
+        ),
+        REMOVEFILTERS('Calendar'[Date]),
+        REMOVEFILTERS('Calendar'[Year]),
+        REMOVEFILTERS('Calendar'[Month_Name_Short])
+    )
+VAR N =
+    CALCULATE(
+        DISTINCTCOUNT(Fact_Sales[Product Name]),
+        REMOVEFILTERS('Calendar'[Date]),
+        REMOVEFILTERS('Calendar'[Year]),
+        REMOVEFILTERS('Calendar'[Month_Name_Short])
+    )
+VAR MarginOfError = 1.96 * DIVIDE(StdDev, SQRT(N))
+RETURN
+    AvgIndex + MarginOfError
+```
+
+`Seasonality_Lower_95` is identical with `AvgIndex - MarginOfError` in the RETURN.
 
 ---
 
