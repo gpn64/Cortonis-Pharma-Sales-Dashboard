@@ -51,7 +51,7 @@ The dashboard is designed for two audiences:
 
 ### Screenshot
 
-![Executive Overview](Screenshots/Executive_Overview.PNG)
+![Executive Overview](Screenshots/Executive_Overview.gif)
 
 ### KPI Cards
 
