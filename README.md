@@ -8,18 +8,6 @@
 
 ---
 
-## Status
-
-| Page | Status |
-|------|--------|
-| Executive Overview | ✅ Complete |
-| Territory & Geographic Performance | ✅ Complete |
-| Product & Therapeutic Class | ✅ Complete |
-| Channel & Customer Analysis | ✅ Complete |
-| Sales Rep & Team Performance | ✅ Complete |
-
----
-
 ## The Context
 
 **Cortonis Pharma** is a fictional pharmaceutical company operating across Poland and Germany. The dataset covers 254,000 sales transactions across 4 years (2017–2020), including product-level detail, customer and distributor information, channel breakdown, geographic data, and sales team hierarchy.
