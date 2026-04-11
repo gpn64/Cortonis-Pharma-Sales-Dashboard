@@ -237,7 +237,7 @@ Six line charts in a 2×3 grid - one per therapeutic class - showing normalized 
 
 ### Screenshot
 
-![Channel & Customer Analysis](Screenshots/Channel_Customer.PNG)
+![Channel & Customer Analysis](Screenshots/channel_customer_analysis.PNG)
 
 ### Channel KPI Cards
 
@@ -288,7 +288,7 @@ This visual answers a fundamentally different type of question than the heatmap 
 
 ### Screenshot
 
-![Sales Rep & Team Performance](Screenshots/Sales_Rep_Performance.PNG)
+![Sales Rep & Team Performance](Screenshots/sales_rep_team_performance.PNG)
 
 ### Team KPI Cards
 
