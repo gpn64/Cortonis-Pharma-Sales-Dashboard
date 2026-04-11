@@ -1,10 +1,10 @@
-# 💊 Cortonis Pharma — Sales Performance Dashboard
+# 💊 Cortonis Pharma - Sales Performance Dashboard
 
 ![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
 ![Power BI](https://img.shields.io/badge/Power%20BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
 ![DAX](https://img.shields.io/badge/DAX-4A4A4A?style=for-the-badge&logo=microsoftexcel&logoColor=white)
 
-> A commercial performance dashboard for a fictional pharmaceutical company — built to answer the questions a sales manager actually asks, with a UX-first approach from Figma wireframe to deployed report.
+> A commercial performance dashboard for a fictional pharmaceutical company - built to answer the questions a sales manager actually asks, with a UX-first approach from Figma wireframe to deployed report.
 
 ---
 
@@ -15,8 +15,8 @@
 | Executive Overview | ✅ Complete |
 | Territory & Geographic Performance | ✅ Complete |
 | Product & Therapeutic Class | ✅ Complete |
-| Channel & Customer Analysis | 🔄 In progress |
-| Sales Rep & Team Performance | 🔄 In progress |
+| Channel & Customer Analysis | ✅ Complete |
+| Sales Rep & Team Performance | ✅ Complete |
 
 ---
 
@@ -25,14 +25,14 @@
 **Cortonis Pharma** is a fictional pharmaceutical company operating across Poland and Germany. The dataset covers 254,000 sales transactions across 4 years (2017–2020), including product-level detail, customer and distributor information, channel breakdown, geographic data, and sales team hierarchy.
 
 The dashboard is designed for two audiences:
-- **Sales leadership** — executive overview, trend monitoring, high-level KPIs
-- **Territory and field managers** — granular performance by rep, territory, product, and channel
+- **Sales leadership** - executive overview, trend monitoring, high-level KPIs
+- **Territory and field managers** - granular performance by rep, territory, product, and channel
 
 ---
 
 ## Data Source
 
-**Foresight — Pharmaceutical Manufacturing Company's Wholesale-Retail Data**
+**Foresight - Pharmaceutical Manufacturing Company's Wholesale-Retail Data**
 254,082 transactions · Poland & Germany · 2017–2020
 
 | Field | Description |
@@ -53,10 +53,10 @@ The dashboard is designed for two audiences:
 
 ---
 
-## Page 1 — Executive Overview
+## Page 1 - Executive Overview
 
 ### What it answers
-- How is the business performing overall — in sales, volume, orders, pricing, and customer count?
+- How is the business performing overall - in sales, volume, orders, pricing, and customer count?
 - Is performance improving or declining vs. the previous year?
 - What does the sales trend look like across the year, and how does it vary by quarter?
 - Which territories, products, channels, or teams are driving the most value?
@@ -77,35 +77,35 @@ Five top-level metrics, each showing the current period value alongside both the
 | **Price / Unit on Average** | Average selling price per unit |
 | **Customers** | Number of distinct active customers |
 
-Each card displays: current value · last year value · absolute variance · % variance. Showing both absolute and relative variance is a deliberate choice — on billion-dollar figures, a "-16%" means more when paired with "-$575.96M". YoY variance adapts automatically to the selected period using `PARALLELPERIOD` DAX logic.
+Each card displays: current value · last year value · absolute variance · % variance. Showing both absolute and relative variance is a deliberate choice - on billion-dollar figures, a "-16%" means more when paired with "-$575.96M". YoY variance adapts automatically to the selected period using `PARALLELPERIOD` DAX logic.
 
-### Trend Chart — Current Year vs. Last Year + Field Parameter (Metric)
+### Trend Chart - Current Year vs. Last Year + Field Parameter (Metric)
 
-The chart overlays two series simultaneously — current period and same period last year — making period-over-period trends immediately visible without any additional interaction. A dropdown field parameter lets the user switch the displayed metric across all five KPIs:
+The chart overlays two series simultaneously - current period and same period last year - making period-over-period trends immediately visible without any additional interaction. A dropdown field parameter lets the user switch the displayed metric across all five KPIs:
 
 ```
 Sales → Units Sold → Orders → Price/Unit → Customers
 ```
 
-Switching the metric updates both the trend chart and the distribution matrix simultaneously — a single selection drives the entire page.
+Switching the metric updates both the trend chart and the distribution matrix simultaneously - a single selection drives the entire page.
 
-### Distribution Matrix — Dual Field Parameters
+### Distribution Matrix - Dual Field Parameters
 
 The matrix on the right provides a ranked breakdown of the selected metric. It uses **two independent field parameters**:
 
-**Parameter 1 — Metric** (shared with the trend chart)
+**Parameter 1 - Metric** (shared with the trend chart)
 Switches the value column between Sales, Units Sold, Orders, Price/Unit, and Customers.
 
-**Parameter 2 — Dimension**
+**Parameter 2 - Dimension**
 A dropdown switches the breakdown axis between:
 - Locations (Country → Region)
 - Product Class → Product
 - Channel → Sub-channel
 - Sales Team → Sales Rep
 
-The matrix displays three columns: the absolute value, a data bar for visual ranking, and a **Var% vs. Last Year** column — color-coded green/red — so performance context is visible directly in the breakdown without needing a separate visual.
+The matrix displays three columns: the absolute value, a data bar for visual ranking, and a **Var% vs. Last Year** column - color-coded green/red - so performance context is visible directly in the breakdown without needing a separate visual.
 
-This dual-parameter architecture means the user can explore any metric across any dimension from a single page — without navigating away or duplicating report pages.
+This dual-parameter architecture means the user can explore any metric across any dimension from a single page - without navigating away or duplicating report pages.
 
 ### Search Bar
 
@@ -117,26 +117,26 @@ Six synchronized slicers on the left sidebar filter all visuals simultaneously:
 
 `Date` · `Product` · `Channel` · `Country` · `Distributor` · `Sales Team`
 
-A **Clear All** button resets all slicers via a named bookmark — one click returns the page to its default state.
+A **Clear All** button resets all slicers via a named bookmark - one click returns the page to its default state.
 
 ### UX Details
 
-- **Personalized greeting** — `USERPRINCIPALNAME()` renders the logged-in user's name and email in the top-right header
-- **Date range slicer** — a dual-handle slider with explicit start/end dates gives precise period control
-- **Last updated timestamp** — displayed in the sidebar for data governance transparency
-- **Help links** — sidebar footer includes How to use, Contact us, and About
-- **Custom navigation** — page navigation via buttons rather than native Power BI tabs
-- **Tooltip pages** — hovering over KPI cards and chart data points surfaces a custom tooltip page with contextual detail
-- **Author signature** — "Developed by Guillaume Pien" displayed in the report footer
+- **Personalized greeting** - `USERPRINCIPALNAME()` renders the logged-in user's name and email in the top-right header
+- **Date range slicer** - a dual-handle slider with explicit start/end dates gives precise period control
+- **Last updated timestamp** - displayed in the sidebar for data governance transparency
+- **Help links** - sidebar footer includes How to use, Contact us, and About
+- **Custom navigation** - page navigation via buttons rather than native Power BI tabs
+- **Tooltip pages** - hovering over KPI cards and chart data points surfaces a custom tooltip page with contextual detail
+- **Author signature** - "Developed by Guillaume Pien" displayed in the report footer
 
 ---
 
-## Page 2 — Territory & Geographic Performance
+## Page 2 - Territory & Geographic Performance
 
 ### What it answers
 - Where are we growing and where are we losing ground?
 - How do Germany and Poland compare across all key metrics?
-- Which regions and cities are the strongest performers — and which are declining?
+- Which regions and cities are the strongest performers - and which are declining?
 - Which cities are high-volume but low-growth (defend), and which are low-volume but high-growth (accelerate)?
 
 ### Screenshot
@@ -145,33 +145,33 @@ A **Clear All** button resets all slicers via a named bookmark — one click ret
 
 ### Country KPI Cards
 
-Two dedicated cards — one per market — display all five metrics side by side for an immediate Germany vs. Poland comparison:
+Two dedicated cards - one per market - display all five metrics side by side for an immediate Germany vs. Poland comparison:
 
 | Metric | Germany | Poland |
 |--------|---------|--------|
-| Sales | ✅ with YoY variance | ✅ (no YoY — 2018 only) |
+| Sales | ✅ with YoY variance | ✅ (no YoY - 2018 only) |
 | Units Sold | ✅ with YoY variance | ✅ |
 | Price / Unit | ✅ with YoY variance | ✅ |
 | Orders | ✅ with YoY variance | ✅ |
 | Active Customers | ✅ with YoY variance | ✅ |
 
-YoY variance indicators are suppressed for Poland where prior-year data is unavailable — displaying "--" rather than a misleading 0% or blank.
+YoY variance indicators are suppressed for Poland where prior-year data is unavailable - displaying "--" rather than a misleading 0% or blank.
 
 ### Sales by Location Map
 
-Bubble map showing sales volume by city across Poland and Germany. Bubble size is proportional to sales — the spatial distribution of revenue is immediately visible, with Germany showing significantly higher density and concentration than Poland.
+Bubble map showing sales volume by city across Poland and Germany. Bubble size is proportional to sales - the spatial distribution of revenue is immediately visible, with Germany showing significantly higher density and concentration than Poland.
 
 ### Distribution Matrix
 
-Same dual field parameter architecture as Page 1 — metric and dimension both switchable independently. Defaults to Locations (Country → Region) with Sales and Var% Sales.
+Same dual field parameter architecture as Page 1 - metric and dimension both switchable independently. Defaults to Locations (Country → Region) with Sales and Var% Sales.
 
-### Sales vs Growth YoY% per City — Quadrant Scatter Plot
+### Sales vs Growth YoY% per City - Quadrant Scatter Plot
 
 The analytical centrepiece of this page. Each bubble represents a city, plotted on:
-- **X axis** — absolute Sales volume
-- **Y axis** — YoY Growth %
+- **X axis** - absolute Sales volume
+- **Y axis** - YoY Growth %
 
-**Quadrant logic — BCG Matrix framework:**
+**Quadrant logic - BCG Matrix framework:**
 
 | Quadrant | Sales | Growth | Label | Strategic implication |
 |----------|-------|--------|-------|----------------------|
@@ -181,147 +181,226 @@ The analytical centrepiece of this page. Each bubble represents a city, plotted 
 | Bottom left | Low | Low | 🐕 Dogs | Review and deprioritize |
 
 **Key technical details:**
-- Quadrant dividers are **dynamic median lines** — recalculated via DAX `MEDIANX` each time a filter is applied. When the user filters by Sales Team or Product, the medians shift to reflect that subset, keeping the quadrant analysis contextually relevant
-- Quadrant background colors (blue = positive, pink = negative zones) make the four segments immediately readable without requiring the user to interpret axis values
-- **Zoom sliders** on both axes allow the user to isolate the dense city cluster in the $0–$10M range without losing the outliers visible at full scale
-- Quadrant labels (Stars, Question Marks, Dogs, Cash Cows) are displayed in the chart legend using BCG Matrix terminology — familiar to any commercial audience
+- Quadrant dividers are **dynamic median lines** - recalculated via DAX `MEDIANX` each time a filter is applied
+- Quadrant background colors (blue = growth zone, pink = decline zone) make the four segments immediately readable
+- **Zoom sliders** on both axes allow the user to isolate the dense city cluster without losing outliers
+- Quadrant labels use BCG Matrix terminology - familiar to any commercial audience
 
 ---
 
-## Page 3 — Product Mix & Therapeutic Class
+## Page 3 - Product Mix & Therapeutic Class
 
 ### What it answers
 - What are we selling, and is the mix shifting across quarters?
-- Which therapeutic classes drive the most revenue — and are they growing?
+- Which therapeutic classes drive the most revenue - and are they growing?
 - Which classes have the strongest seasonal patterns, and when do they peak?
 
 ### Screenshot
 
-![Product Mix](./Screenshots/Product_Mix.PNG)
+![Product Mix](Screenshots/Product_Mix.PNG)
 
-### Product Class Ranks — Ribbon Chart with Field Parameter
+### Product Class Ranks - Ribbon Chart with Field Parameter
 
-A ribbon chart showing the ranking and relative volume of all 6 therapeutic classes across quarters. The crossing of ribbons signals a ranking change between classes — immediately visible without reading the axis values.
+A ribbon chart showing the ranking and relative volume of all 6 therapeutic classes across quarters. Ribbon crossings signal ranking changes between classes - immediately visible without reading axis values. Piloted by the same field parameter metric selector as all other pages.
 
-A dropdown field parameter lets the user switch the ranking metric:
-```
-Sales → Units Sold → Orders → Price/Unit → Customers
-```
+**Color convention:** Each class has a dedicated color from a coordinated blue/teal palette. Green (`#03DE74`) and red (`#D7263D`) are deliberately excluded - reserved exclusively for variance indicators elsewhere in the dashboard.
 
-Switching the metric rerankings all classes dynamically — the same interaction pattern as Pages 1 and 2, keeping the UX consistent across the dashboard.
+| Class | Color |
+|-------|-------|
+| Analgesics | `#0B1F52` |
+| Antibiotics | `#58FFE6` |
+| Antimalarial | `#55FFCC` |
+| Antiseptics | `#1A6B8A` |
+| Antipiretics | `#4B5EA6` |
+| Mood Stabilizers | `#00A896` |
 
-### Distribution By Product — Matrix with Drill-Down
+### Distribution By Product - Matrix with Drill-Down
 
-Same dual field parameter architecture as Pages 1 and 2:
+Same dual field parameter architecture as Pages 1 and 2. Defaults to Product Class level with drill-down to Product Name. Displays absolute value, data bar, and Var% YoY per class.
 
-**Parameter 1 — Metric:** Sales, Units Sold, Orders, Price/Unit, Customers
-**Parameter 2 — Dimension:** defaults to Product Class, drill-down to Product Name
+### Seasonality Analysis - Small Multiples with 95% Confidence Intervals
 
-The matrix displays absolute value, data bar, and Var% YoY per class — giving immediate context on both volume and trend without requiring a separate visual. Data bars use cyan (`#58FFE6`) to distinguish them from variance indicators.
+Six line charts in a 2×3 grid - one per therapeutic class - showing normalized monthly sales relative to the annual average.
 
-### Seasonality Analysis — Small Multiples with Confidence Intervals
+**Seasonality Index:** `Monthly Total / Average Monthly Total (annual)` - a value of 1.0 means exactly average, 1.5 means 50% above. Normalization makes all 6 classes directly comparable regardless of their very different absolute volumes. A dashed reference line at Y=1.0 materializes the baseline on each panel.
 
-The most technically sophisticated visual in the dashboard. Six line charts in a 2×3 small multiples grid — one panel per therapeutic class — showing how normalized monthly sales evolve across the year relative to the annual average.
+**95% Confidence Intervals:** Shaded band calculated as `Index ± 1.96 × (StdDev / √N)` where StdDev is the dispersion of the index across all products within the class for that month. A narrow band = all products share a similar seasonal pattern. A wide band = high dispersion within the class.
 
-**The Seasonality Index**
-
-The Y axis displays a normalized index rather than raw sales values:
-
-```
-Seasonality_Index = Monthly Total Sales / Average Monthly Sales (annual)
-```
-
-A value of 1.0 means the month is exactly average. A value of 1.5 means 50% above average. This normalization makes the 6 classes directly comparable regardless of their very different absolute volumes — Analgesics at $692M and Antimalarial at $452M show on the same scale.
-
-A dashed reference line at Y=1.0 (labeled "Avg") materializes the baseline on each panel, making deviations immediately readable without requiring the user to interpret axis values.
-
-**95% Confidence Intervals**
-
-Each panel shows a shaded band around the index line representing a 95% confidence interval — calculated as:
-
-```
-IC = Index ± 1.96 × (StdDev / √N)
-```
-
-Where StdDev is the standard deviation of the seasonality index across all products within the class for that month, and N is the number of distinct products. A narrow band means all products in the class share a similar seasonal pattern. A wide band means high dispersion — some products peak while others trough in the same month.
-
-**Key patterns visible in the data:**
+**Seasonal patterns identified:**
 
 | Class | Peak months | Interpretation |
 |-------|-------------|----------------|
-| Analgesics | June – August | Estival peak — sports injuries, outdoor activity |
-| Antibiotics | January – February | Winter peak — respiratory infections |
-| Antimalarial | April & October | Two peaks — spring and autumn travel seasons |
-| Antipiretics | February & November | Winter peaks — fever and infections |
-| Antiseptics | Relatively flat | Low seasonality — regular usage year-round |
-| Mood Stabilizers | Complex oscillations | Multiple peaks — consistent with seasonal depression literature |
+| Analgesics | June – August | Estival peak - sports injuries, outdoor activity |
+| Antibiotics | January – February | Winter peak - respiratory infections |
+| Antimalarial | April & October | Two peaks - spring and autumn travel seasons |
+| Antipiretics | February & November | Winter peaks - fever and infections |
+| Antiseptics | Relatively flat | Low seasonality - regular usage year-round |
+| Mood Stabilizers | Complex oscillations | Consistent with seasonal depression literature |
 
-**Technical implementation:**
+---
 
-The confidence interval measures use `REMOVEFILTERS` rather than `ALLEXCEPT` to correctly preserve the month context across both `Month Number` and `Month_Name_Short` columns simultaneously:
+## Page 4 - Channel & Customer Analysis
+
+### What it answers
+- Who is buying and through what channel?
+- How do Hospital and Pharmacy compare across all key metrics?
+- Which sub-channel drives the most value for each therapeutic class?
+- Where does revenue concentrate when drilling from channel down to city level?
+
+### Screenshot
+
+![Channel & Customer Analysis](Screenshots/Channel_Customer.PNG)
+
+### Channel KPI Cards
+
+Two dedicated cards - Hospital and Pharmacy - display all five metrics with full YoY variance for an immediate channel comparison:
+
+| Metric | Hospital | Pharmacy |
+|--------|----------|----------|
+| Sales | $1.69bn ▲ +34.6% | $1.82bn ▲ +25.7% |
+| Units Sold | 4M ▲ +31.8% | 4M ▲ +27.2% |
+| Price / Unit | $410.80 ▼ -0.0% | $412.12 ▼ -0.4% |
+| Orders | 47K ▲ +72.6% | 47K ▲ +62.1% |
+| Active Customers | 371 ▲ +39.5% | 380 ▲ +33.3% |
+
+Pharmacy leads on Sales ($1.82bn vs $1.69bn) while Hospital shows stronger Sales growth (+34.6% vs +25.7%) - a nuance only visible when both absolute values and growth rates are shown together.
+
+### Channels vs Product Class Heatmap
+
+A matrix crossing **Channel × Sub-channel** (Hospital: Government, Private / Pharmacy: Institution, Retail) against **Product Class** - showing sales contribution at each intersection.
+
+Color gradient from light to dark reflects relative value - the highest-value cell in each column is immediately identifiable. The heatmap reveals structural patterns invisible in standard bar charts: Retail is the dominant sub-channel for all classes, while Antimalarial is consistently the weakest performer across all sub-channels.
+
+Piloted by a field parameter metric selector - the same interaction pattern as all other pages.
+
+**Sub-title:** *"Which sub-channel drives the most value for each therapeutic class?"*
+
+### Sales Decomposition by Channel Hierarchy - Decomposition Tree
+
+An interactive drill-down visual allowing exploration of any metric along a fixed hierarchy:
+
+```
+Sales → Channel → Sub-channel → Product Class → City
+```
+
+The user drills through each level by clicking - starting from the total and progressively narrowing to the most granular level. Each branch shows the absolute value and its contribution to the parent node.
+
+**Sub-title:** *"Drill into any metric from Channel down to City level"*
+
+This visual answers a fundamentally different type of question than the heatmap - not "which cell is biggest" but "how did I get to this number, step by step."
+
+---
+
+## Page 5 - Sales Rep & Team Performance
+
+### What it answers
+- Who truly outperforms - in their team and across the board?
+- Which teams are driving the most revenue, and at what growth rate?
+- Is a rep's performance driven by genuine skill or by territory advantage?
+
+### Screenshot
+
+![Sales Rep & Team Performance](Screenshots/Sales_Rep_Performance.PNG)
+
+### Team KPI Cards
+
+Four cards - one per team - showing all key metrics with YoY variance:
+
+| Team | Sales | Growth YoY |
+|------|-------|------------|
+| Alpha | $777.13M | ▲ +23.0% |
+| Beta | $825.35M | ▲ +29.3% |
+| Charlie | $806.22M | ▲ +50.0% |
+| Delta | $1.10bn | ▲ +22.8% |
+
+Delta leads on absolute sales ($1.10bn) while Charlie shows the strongest growth (+50.0%) - two distinct performance stories visible at a glance.
+
+### Distribution By Sales Team & Sales Rep - Performance Matrix
+
+The analytical centrepiece of this page. A single matrix with `Sales Team → Sales Rep` hierarchy in rows and six performance columns - all piloted by the same field parameter metric selector as the rest of the dashboard.
+
+| Column | Description |
+|--------|-------------|
+| **Sales** | Absolute value + data bar + Var% YoY |
+| **Rep Sales vs Team Avg** | % deviation from the rep's own team average |
+| **Rep Sales Team Rank** | Rank within the rep's team (1 = best in team) |
+| **Rep Sales vs Global Avg** | % deviation from the all-rep average |
+| **Rep Sales Global Rank** | Rank across all reps company-wide |
+
+**Why two ranking dimensions matter**
+
+A raw sales ranking is misleading - a rep covering Berlin will structurally outsell a rep in a rural territory regardless of skill. The dual ranking separates **absolute performance** (Global Rank) from **contextual performance** (Team Rank + vs Team Avg), making it possible to identify:
+- Reps who rank high globally AND in their team → genuine top performers
+- Reps who rank high globally but low in their team → benefiting from strong territory
+- Reps who rank low globally but high in their team → strong performers in a weaker territory
+
+**Example from the data:** Abigail Thompson (Bravo) is #1 in her team (+10.6% vs team avg) AND #1 globally (+12.8% vs global avg) - a clear top performer. Alan Ray (Alfa) is #3 in his team (-7.2% vs team avg) and #12 globally (-10.9% vs global avg) - structurally disadvantaged or underperforming.
+
+**Key DAX implementation**
+
+The ranking measures use `ISINSCOPE` to suppress subtotals and totals, a `SUM > 0` guard to prevent phantom rows from appearing for reps outside their actual team, and `ALL(Dim_Sales_Team)` to break the team filter context for global measures:
 
 ```dax
-Seasonality_Index =
-VAR TotalThisMonth =
-    CALCULATE(
-        SUM(Fact_Sales[Sales]),
-        REMOVEFILTERS('Calendar'[Date]),
-        REMOVEFILTERS('Calendar'[Year]),
-        REMOVEFILTERS('Calendar'[Month_Name_Short])
-    )
-VAR TotalAllYear =
-    CALCULATE(
-        SUM(Fact_Sales[Sales]),
-        REMOVEFILTERS('Calendar')
-    )
-VAR NbMonths =
-    CALCULATE(
-        DISTINCTCOUNT('Calendar'[Month Number]),
-        REMOVEFILTERS('Calendar')
-    )
-VAR AvgMonthlyTotal = DIVIDE(TotalAllYear, NbMonths)
-RETURN
-    DIVIDE(TotalThisMonth, AvgMonthlyTotal)
+Rep_Rank_Global_Sales =
+IF(
+    ISINSCOPE(Fact_Sales[Name of Sales Rep]) &&
+    CALCULATE(SUM(Fact_Sales[Sales])) > 0,
+    VAR CurrentRepSales = CALCULATE(SUM(Fact_Sales[Sales]))
+    VAR AllRepsSales =
+        CALCULATETABLE(
+            ADDCOLUMNS(
+                ALL(Fact_Sales[Name of Sales Rep]),
+                "RepSales",
+                CALCULATE(
+                    SUM(Fact_Sales[Sales]),
+                    ALL(Dim_Sales_Team)
+                )
+            ),
+            ALL(Dim_Sales_Team)
+        )
+    VAR BetterRepsGlobal =
+        COUNTROWS(
+            FILTER(AllRepsSales, [RepSales] > CurrentRepSales)
+        )
+    RETURN
+        BetterRepsGlobal + 1,
+    BLANK()
+)
 ```
 
 ```dax
-Seasonality_Upper_95 =
-VAR AvgIndex = [Seasonality_Index]
-VAR StdDev =
-    CALCULATE(
-        STDEVX.P(
-            VALUES(Fact_Sales[Product Name]),
-            CALCULATE([Seasonality_Index])
-        ),
-        REMOVEFILTERS('Calendar'[Date]),
-        REMOVEFILTERS('Calendar'[Year]),
-        REMOVEFILTERS('Calendar'[Month_Name_Short])
-    )
-VAR N =
-    CALCULATE(
-        DISTINCTCOUNT(Fact_Sales[Product Name]),
-        REMOVEFILTERS('Calendar'[Date]),
-        REMOVEFILTERS('Calendar'[Year]),
-        REMOVEFILTERS('Calendar'[Month_Name_Short])
-    )
-VAR MarginOfError = 1.96 * DIVIDE(StdDev, SQRT(N))
-RETURN
-    AvgIndex + MarginOfError
+Rep_vs_TeamAvg_Sales =
+IF(
+    ISINSCOPE(Fact_Sales[Name of Sales Rep]) &&
+    CALCULATE(SUM(Fact_Sales[Sales])) > 0,
+    VAR CurrentTeam = MAX(Fact_Sales[Sales Team])
+    VAR RepSales = CALCULATE(SUM(Fact_Sales[Sales]))
+    VAR TeamAvg =
+        CALCULATE(
+            AVERAGEX(
+                VALUES(Fact_Sales[Name of Sales Rep]),
+                CALCULATE(SUM(Fact_Sales[Sales]))
+            ),
+            ALL(Fact_Sales[Name of Sales Rep]),
+            Fact_Sales[Sales Team] = CurrentTeam
+        )
+    RETURN
+        DIVIDE(RepSales - TeamAvg, TeamAvg),
+    BLANK()
+)
 ```
-
-`Seasonality_Lower_95` is identical with `AvgIndex - MarginOfError` in the RETURN.
 
 ---
 
 ## Design Approach
 
-The dashboard was **wireframed in Figma** before any Power BI development began. Layout, navigation flow, color palette, KPI card structure, and slicer placement were all defined at the wireframe stage — ensuring design decisions were intentional rather than reactive.
+The dashboard was **wireframed in Figma** before any Power BI development began. Layout, navigation flow, color palette, KPI card structure, and slicer placement were all defined at the wireframe stage - ensuring design decisions were intentional rather than reactive.
 
 **Why UX matters in BI**
 
-Users today are surrounded by polished consumer apps and websites. When a new internal tool doesn't meet that same standard of experience, adoption suffers — not because the data is wrong, but because people don't have time to relearn how to navigate yet another unfamiliar interface.
+Users today are surrounded by polished consumer apps and websites. When a new internal tool doesn't meet that same standard of experience, adoption suffers - not because the data is wrong, but because people don't have time to relearn how to navigate yet another unfamiliar interface.
 
-This dashboard is built on the premise that a BI report should feel as intuitive as the apps people already use daily. That means consistent navigation, a clear visual hierarchy, and — critically — each page designed around a single audience and a single question. A field manager shouldn't have to scroll past executive-level content to find their territory data. A sales leader shouldn't be overwhelmed by rep-level detail on a summary page. When the right information reaches the right person without friction, adoption follows naturally.
+This dashboard is built on the premise that a BI report should feel as intuitive as the apps people already use daily. That means consistent navigation, a clear visual hierarchy, and - critically - each page designed around a single audience and a single question. A field manager shouldn't have to scroll past executive-level content to find their territory data. A sales leader shouldn't be overwhelmed by rep-level detail on a summary page. When the right information reaches the right person without friction, adoption follows naturally.
 
 **Typography**
 
@@ -340,13 +419,13 @@ This dashboard is built on the premise that a BI report should feel as intuitive
 | Mint | `#55FFCC` | Secondary accent |
 | Red | `#D7263D` | Negative variance, decline indicators |
 
-The palette is intentionally tight — two neutrals (navy, white) and three accent colors with clear semantic roles. Green and red are reserved exclusively for variance indicators; cyan and mint handle all data visualization. This avoids the common mistake of using color decoratively, which creates visual noise without adding information.
+The palette is intentionally tight - two neutrals (navy, white) and three accent colors with clear semantic roles. Green and red are reserved exclusively for variance indicators; cyan and mint handle all data visualization.
 
 **Design principles applied:**
-- Defined color semantics — every color has a single purpose and never appears outside that role
-- One question per page — each page has a defined analytical purpose and a defined audience
-- App-like experience — custom button navigation, personalized header, feedback footer
-- Information density calibrated by audience — executive page prioritizes scannable KPIs; detail pages support deeper exploration
+- Defined color semantics - every color has a single purpose and never appears outside that role
+- One question per page - each page has a defined analytical purpose and a defined audience
+- App-like experience - custom button navigation, personalized header, feedback footer
+- Information density calibrated by audience - executive page prioritizes scannable KPIs; detail pages support deeper exploration
 
 ---
 
@@ -369,27 +448,71 @@ RETURN
 ```dax
 Median Sales =
 MEDIANX(
-    VALUES(Data[City]),
+    VALUES(Fact_Sales[City]),
     CALCULATE([Total Sales])
 )
 ```
 
-**Germany Sales (country-filtered)**
+**Seasonality Index**
 ```dax
-Germany Sales =
-CALCULATE([Total Sales], Data[Country] = "Germany")
+Seasonality_Index =
+VAR TotalThisMonth =
+    CALCULATE(
+        SUM(Fact_Sales[Sales]),
+        REMOVEFILTERS('Calendar'[Date]),
+        REMOVEFILTERS('Calendar'[Year]),
+        REMOVEFILTERS('Calendar'[Month_Name_Short])
+    )
+VAR TotalAllYear =
+    CALCULATE(SUM(Fact_Sales[Sales]), REMOVEFILTERS('Calendar'))
+VAR NbMonths =
+    CALCULATE(DISTINCTCOUNT('Calendar'[Month Number]), REMOVEFILTERS('Calendar'))
+RETURN
+    DIVIDE(TotalThisMonth, DIVIDE(TotalAllYear, NbMonths))
 ```
 
-**Customers (distinct count)**
+**Rep performance vs team average**
 ```dax
-Customers =
-DISTINCTCOUNT(Data[Customer Name])
+Rep_vs_TeamAvg_Sales =
+IF(
+    ISINSCOPE(Fact_Sales[Name of Sales Rep]) &&
+    CALCULATE(SUM(Fact_Sales[Sales])) > 0,
+    VAR CurrentTeam = MAX(Fact_Sales[Sales Team])
+    VAR RepSales = CALCULATE(SUM(Fact_Sales[Sales]))
+    VAR TeamAvg =
+        CALCULATE(
+            AVERAGEX(
+                VALUES(Fact_Sales[Name of Sales Rep]),
+                CALCULATE(SUM(Fact_Sales[Sales]))
+            ),
+            ALL(Fact_Sales[Name of Sales Rep]),
+            Fact_Sales[Sales Team] = CurrentTeam
+        )
+    RETURN DIVIDE(RepSales - TeamAvg, TeamAvg),
+    BLANK()
+)
 ```
 
-**Average Price per Unit**
+**Rep global rank**
 ```dax
-Avg Price per Unit =
-DIVIDE([Total Sales], [Total Units])
+Rep_Rank_Global_Sales =
+IF(
+    ISINSCOPE(Fact_Sales[Name of Sales Rep]) &&
+    CALCULATE(SUM(Fact_Sales[Sales])) > 0,
+    VAR CurrentRepSales = CALCULATE(SUM(Fact_Sales[Sales]))
+    VAR AllRepsSales =
+        CALCULATETABLE(
+            ADDCOLUMNS(
+                ALL(Fact_Sales[Name of Sales Rep]),
+                "RepSales",
+                CALCULATE(SUM(Fact_Sales[Sales]), ALL(Dim_Sales_Team))
+            ),
+            ALL(Dim_Sales_Team)
+        )
+    RETURN
+        COUNTROWS(FILTER(AllRepsSales, [RepSales] > CurrentRepSales)) + 1,
+    BLANK()
+)
 ```
 
 ---
@@ -405,7 +528,7 @@ DIVIDE([Total Sales], [Total Units])
 
 ## Data Source
 
-**Foresight — Pharmaceutical Manufacturing Company's Wholesale-Retail Data**
+**Foresight - Pharmaceutical Manufacturing Company's Wholesale-Retail Data**
 [https://foresightbi.com.ng/practice-data/3-datasets-for-your-portfolio/](https://foresightbi.com.ng/practice-data/3-datasets-for-your-portfolio/)
 
 ---
