@@ -185,7 +185,7 @@ The analytical centrepiece of this page. Each bubble represents a city, plotted 
 
 ### Screenshot
 
-![Product Mix](Screenshots/Product_Mix.PNG)
+![Product Mix](Screenshots/Product_Mix.gif)
 
 ### Product Class Ranks - Ribbon Chart with Field Parameter
 
@@ -237,7 +237,7 @@ Six line charts in a 2×3 grid - one per therapeutic class - showing normalized 
 
 ### Screenshot
 
-![Channel & Customer Analysis](Screenshots/channel_customer_analysis.PNG)
+![Channel & Customer Analysis](Screenshots/Channel_Customer_Analysis.gif)
 
 ### Channel KPI Cards
 
@@ -288,7 +288,7 @@ This visual answers a fundamentally different type of question than the heatmap 
 
 ### Screenshot
 
-![Sales Rep & Team Performance](Screenshots/sales_rep_team_performance.PNG)
+![Sales Rep & Team Performance](Screenshots/Sales_Rep_Team_Performance.gif)
 
 ### Team KPI Cards
 
