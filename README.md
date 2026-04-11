@@ -5,10 +5,6 @@
 ![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
 ![Data Visualization](https://img.shields.io/badge/Data%20Visualization-E84393?style=for-the-badge&logo=googleanalytics&logoColor=white)
 
-> A commercial performance dashboard for a fictional pharmaceutical company - built to answer the questions a sales manager actually asks, with a UX-first approach from Figma wireframe to deployed report.
-
----
-
 ## The Context
 
 **Cortonis Pharma** is a fictional pharmaceutical company operating across Poland and Germany. The dataset covers 254,000 sales transactions across 4 years (2017–2020), including product-level detail, customer and distributor information, channel breakdown, geographic data, and sales team hierarchy.
