@@ -129,7 +129,7 @@ A **Clear All** button resets all slicers via a named bookmark - one click retur
 
 ### Screenshot
 
-![Territory Performance](Screenshots/Territory_Performance.PNG)
+![Territory Performance](Screenshots/Territory_Performance.gif)
 
 ### Country KPI Cards
 
